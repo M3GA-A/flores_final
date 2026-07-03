@@ -151,3 +151,14 @@ El servidor Flask se ejecuta en modo de desarrollo. Para publicar la web en prod
 
 Proyecto desarrollado de forma colaborativa como trabajo grupal.
 
+<img width="1500" height="827" alt="inicio" src="https://github.com/user-attachments/assets/24a2d005-bfee-4319-b9ca-5389dbdf26b4" />
+
+<img width="1509" height="827" alt="bodas" src="https://github.com/user-attachments/assets/86341b24-a318-416e-87a6-6534e2d76717" />
+
+<img width="1511" height="827" alt="flores" src="https://github.com/user-attachments/assets/5208b576-7e3f-4d67-a823-4408331898fd" />
+
+<img width="1508" height="827" alt="contacto" src="https://github.com/user-attachments/assets/c3322e2d-a4ea-4cd6-9bfd-e687818b519b" />
+
+
+
+
