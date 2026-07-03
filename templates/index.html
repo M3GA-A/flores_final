@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tina plena de flors - Portada</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" href="/static/img/favicono 2/favicon-256x256.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/static/img/favicono 2/apple-icon-180x180.png">
+
+    <link rel="stylesheet" href="/static/estilos.css">
+    <link rel="stylesheet" href="/static/estilosFlores.css">
+    <link rel="stylesheet" href="/static/estilosBodas.css">
+    <link rel="stylesheet" href="/static/estilosEventos.css">
+    <link rel="stylesheet" href="/static/estilosContacto.css">
+    <link rel="stylesheet" href="/static/estilosPedidos.css">
+    <link rel="stylesheet" href="/static/estilosNosotros.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+{% block content %}
+{% endblock %}
+    <footer>
+        <div class="footer-container">
+            <!-- Columna 1: Logotipo e Identidad -->
+            <div class="footer-column footer-brand">
+                <div class="logo-wrapper">
+                    <!-- Sustituye la URL de la imagen por la ruta local o externa de tu logo real -->
+                    <img src="/static/imagotip_tagline.webp" alt="Tina plena de flors Logo" class="footer-logo">
+                </div>
+                <p class="brand-tagline">Arreglos florales y decoración natural con alma.</p>
+            </div>
+    
+            <!-- Columna 2: Ubicación / Dirección -->
+            <div class="footer-column footer-location">
+                <h3>Nuestra Tienda</h3>
+                <div class="location-content">
+                    <p class="brand-tagline">Calle de la Sínia, 10A<br />43712 Llorenç del Penedés<br />Tarragona</p>
+                    <i class="fa-solid fa-location-dot icon"></i>
+                    <a href="https://maps.app.goo.gl/xmtcDdw6vP1vVfxU8" target="_blank" rel="noopener noreferrer"
+                        class="footer-link">
+                        Encuéntranos en Google Maps
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Columna 3: Contacto y Redes Sociales -->
+            <div class="footer-column footer-contact">
+                <h3>Contacto</h3>
+                <div class="contact-methods">
+                    <!-- Teléfono 1 -->
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone icon"></i>
+                        <a href="tel:+34610487373" class="footer-link">610 48 73 73</a>
+                    </div>
+    
+                    <!-- Teléfono 2 -->
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone icon"></i>
+                        <a href="tel:+34667602825" class="footer-link">667 60 28 25</a>
+                    </div>
+    
+                    <!-- Correo Electrónico -->
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope icon"></i>
+                        <a href="mailto:tinaplenadeflors@gmail.com" class="footer-link">tinaplenadeflors@gmail.com</a>
+                    </div>
+    
+                    <!-- Instagram -->
+                    <div class="contact-item">
+                        <i class="fa-brands fa-instagram icon"></i>
+                        <a href="https://www.instagram.com/tinaplenadeflors/" target="_blank" rel="noopener noreferrer"
+                            class="footer-link">@tinaplenadeflors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Barra horizontal divisoria -->
+        <hr class="footer-divider">
+    
+        <!-- Subfooter: Derechos y Enlaces Legales -->
+        <div class="sub-footer">
+            <p class="copyright">&copy; 2026 Tina plena de flors. Todos los derechos reservados.</p>
+            <div class="legal-links">
+                <a href="/static/docs/politica_privacidad.pdf" target="_blank" rel="noopener noreferrer" class="legal-link">Política de Privacidad</a>
+                <span class="legal-separator">&bull;</span>
+                <a href="/static/docs/politica_cookies.pdf" target="_blank" rel="noopener noreferrer" class="legal-link">Política de Cookies</a>
+                <span class="legal-separator">&bull;</span>
+                <a href="/static/docs/terminos_condiciones.pdf" target="_blank" rel="noopener noreferrer" class="legal-link">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

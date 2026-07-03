@@ -1,0 +1,827 @@
+/* ==========================================================================
+   VARIABLES DE NEOMORFISMO (NUEVA PALETA CORPORATIVA)
+   ========================================================================== */
+:root {
+    /* --- TEMA CLARO (Página principal) --- */
+
+    /* Fondo base: Color crema (Recuadro inferior derecho) */
+    --bg-color: #f4e8df;
+
+    /* Sombras recalculadas para el fondo crema */
+    --shadow-light: #ffffff;
+    --shadow-dark: #d1c5bc;
+
+    /* Textos: Color pizarra oscuro (Recuadro inferior central) */
+    --text-main: #111a1a;
+    /* Texto secundario: Un tono derivado del pizarra para suavizar */
+    --text-light: #6a7575;
+
+    /* Acento: Color terracota (Recuadro inferior izquierdo) */
+    --accent: #b66126;
+
+
+    /* --- TEMA OSCURO (Footer) --- */
+
+    /* Fondo del footer: Color pizarra oscuro */
+    --bg-footer: #3d483d;
+
+    /* Sombras neomórficas recalculadas para el fondo oscuro */
+    --shadow-dark-footer: #080d0d;
+    --shadow-light-footer: #1a2727;
+
+    /* Texto principal del footer: Volvemos al crema para máximo contraste */
+    --text-primary: #f4e8df;
+
+    /* Texto secundario del footer: Usamos el Verde Salvia (Recuadro superior derecho) */
+    --text-muted: #92b09c;
+
+    /* Acento del footer: Mantenemos el terracota para coherencia */
+    --accent-color: #b66126;
+
+
+    /* --- COLORES CORPORATIVOS EXTRA (De reserva) --- */
+    --brand-blue: #aec0ce;
+    /* Azul grisáceo (Recuadro superior izquierdo) */
+    --brand-green: #92b09c;
+    /* Verde salvia */
+}
+
+/* --- RESET Y ESTILOS GLOBALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-main);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-main);
+    transition: color 0.3s ease;
+}
+
+/* --- CLASES UTILITARIAS NEOMORFISMO --- */
+.neu-box {
+    background: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+}
+
+.neu-box-inset {
+    background: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- HEADER Y NAVEGACIÓN --- */
+.neu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-color);
+    box-shadow: 5px 5px 15px var(--shadow-dark),
+        -5px -5px 15px var(--shadow-light);
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    /* Efecto botón presionado al hacer hover */
+    box-shadow: inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}
+
+
+
+/* --- SECCIÓN HERO --- */
+.hero {
+    height: 60vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero-video-portada {
+    position: relative;
+    height: 72vh;
+    min-height: 520px;
+    padding: 0;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: #3a2e30;
+}
+
+.video-fondo,
+.capa-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-fondo {
+    object-fit: cover;
+}
+
+.capa-video {
+    background: linear-gradient(90deg,
+            rgba(58, 46, 48, 0.45),
+            rgba(58, 46, 48, 0.18) 48%,
+            rgba(58, 46, 48, 0.42));
+}
+
+.hero-content-video {
+    position: relative;
+    z-index: 1;
+    width: min(920px, 90%);
+    text-align: center;
+}
+
+.hero-content-video h2 {
+    color: #ffffff;
+    font-size: clamp(3rem, 7vw, 6.4rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    text-shadow: 0 4px 28px rgba(0, 0, 0, 0.32);
+}
+
+.hero-content-video p {
+    max-width: 880px;
+    margin: 1.1rem auto 1.8rem;
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 3vw, 2.3rem);
+    text-shadow: 0 4px 22px rgba(0, 0, 0, 0.28);
+}
+
+.boton-video {
+    display: inline-block;
+    padding: 1rem 2rem;
+    color: var(--text-main);
+    background: #e8d7de;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.15);
+    border: none;
+}
+
+.boton-video:hover {
+    color: #ffffff;
+    background: var(--accent);
+}
+
+.hero-content {
+    padding: 3rem;
+    max-width: 600px;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.neu-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--bg-color);
+    border-radius: 50px;
+    font-weight: 500;
+    color: var(--accent);
+    box-shadow: 6px 6px 12px var(--shadow-dark),
+        -6px -6px 12px var(--shadow-light);
+    transition: all 0.2s ease;
+}
+
+.neu-button:active {
+    box-shadow: inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}
+/* --- BANNER DE RESEÑAS --- */
+.banner-resenas-wrapper {
+    margin: 4rem 5%;
+    overflow: hidden;
+}
+
+.banner-resenas {
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 1rem;
+}
+
+.banner-resenas::-webkit-scrollbar {
+    height: 10px;
+}
+
+.banner-resenas::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.banner-resenas::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.resena {
+    flex: 0 0 auto;
+    width: min(100%, 350px);
+    scroll-snap-align: center;
+    text-align: center;
+    font-style: italic;
+    color: var(--text-light);
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+}
+
+.resena span {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--text-main);
+    font-style: normal;
+}
+
+/* ==========================================================================
+   7. SOBRE NOSOTROS (OPTIMIZADO CON NEOMORFISMO REAL)
+   ========================================================================= */
+.historia {
+    padding: 80px 10%;
+    background: var(--bg-color);
+}
+
+.historia-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+/* CONTENEDOR DE LA IMAGEN */
+.historia-img {
+    flex: 1;
+    min-width: 320px;
+    max-width: 500px;
+    padding: 1.5rem;
+    background: var(--bg-color);
+    border-radius: 30px;
+    /* Marco neomorfista contenedor */
+    box-shadow: 10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+    display: flex;
+    align-items: center;
+}
+
+.historia-img img {
+    width: 100%;
+    height: 400px;
+    border-radius: 20px;
+    object-fit: cover;
+    filter: brightness(0.95);
+    transition: transform 0.5s ease;
+}
+
+/* Efecto hover sutil en la imagen de nosotros */
+.historia-img:hover img {
+    transform: scale(1.02);
+}
+
+/* TARJETA DE TEXTO NEOMORFISTA */
+.historia-texto {
+    flex: 1;
+    min-width: 320px;
+    padding: 2.5rem;
+    background: var(--bg-color);
+    border-radius: 30px;
+    /* Hace que el texto flote elegantemente en una tarjeta soft-3D */
+    box-shadow: 10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.historia-texto h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+    /* Cambiado al color acento floral para destacar */
+}
+
+.historia-texto p {
+    margin-bottom: 15px;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    .historia-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .historia-texto {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* --- GALERÍA (CSS GRID + EFECTOS) --- */
+.galeria {
+    padding: 4rem 5%;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--accent);
+}
+
+.grid-container {
+    display: grid;
+    /* Grid Responsive sin Media Queries */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+}
+
+.card {
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Efectos en las Fotos */
+.foto-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    /* Necesario para que la imagen no se salga al hacer zoom */
+    box-shadow: inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+}
+
+.foto-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: brightness(0.9);
+    /* Ligeramente opaca por defecto */
+}
+
+/* El efecto al pasar el ratón */
+.card:hover .foto-container img {
+    transform: scale(1.1);
+    /* Zoom in */
+    filter: brightness(1.1);
+    /* Brilla al hacer hover */
+}
+
+/* --- MAPA --- */
+.ubicacion {
+    padding: 2rem 5% 4rem;
+}
+
+.mapa-container {
+    padding: 1rem;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.mapa-container iframe {
+    border-radius: 15px;
+}
+
+/* --- FOOTER --- */
+.ubicacion {
+    padding: 2rem 5% 4rem;
+}
+
+.contacto-mapa {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+    padding: 1.5rem;
+}
+
+.datos-contacto {
+    width: 35%;
+    padding: 1rem;
+}
+
+.datos-contacto h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.datos-contacto p {
+    margin-bottom: 1.2rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.datos-contacto a {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.mapa-container {
+    width: 65%;
+    padding: 1rem;
+    border-radius: 20px;
+    overflow: hidden;
+
+    box-shadow:
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+}
+
+.mapa-container iframe {
+    display: block;
+    width: 100%;
+    border-radius: 15px;
+}
+
+@media (max-width: 800px) {
+    .contacto-mapa {
+        flex-direction: column;
+    }
+
+    .datos-contacto,
+    .mapa-container {
+        width: 100%;
+    }
+}
+
+footer {
+    background-color: var(--bg-footer);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 60px 20px 30px 20px;
+    align-items: center;
+    text-align: center;
+    /* Un poco más de padding arriba para respirar */
+    font-size: 14px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+/* Estructura responsiva de 3 columnas */
+@media (min-width: 768px) {
+    .footer-container {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .footer-column {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0 30px;
+        /* Un poco más despaciado horizontal */
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-column {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .contact-item {
+        justify-content: center;
+    }
+}
+
+/* 2. Logo hundido (Bajorrelieve) */
+.footer-brand .footer-logo {
+    max-height: 110px;
+    max-width: 210px;
+    width: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 15px;
+    background: var(--bg-footer);
+
+    box-shadow:
+        inset 3px 3px 6px var(--shadow-dark-footer),
+        inset -3px -3px 6px var(--shadow-light-footer);
+}
+
+.brand-tagline {
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.6;
+    padding: 0 10px;
+}
+
+.footer-column h3 {
+    color: var(--text-primary);
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Estructura de la lista de contactos */
+.contact-methods {
+    display: block;
+}
+
+/* 3. Ítems de contacto como botones extruidos */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 12px 18px;
+    border-radius: 15px;
+    background: var(--bg-footer);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    /* Efecto hacia afuera */
+    box-shadow:
+        5px 5px 10px var(--shadow-dark-footer),
+        -5px -5px 10px var(--shadow-light-footer);
+}
+
+/* Efecto al hacer clic en un contacto */
+.contact-item:active {
+    box-shadow:
+        inset 4px 4px 8px var(--shadow-dark-footer),
+        inset -4px -4px 8px var(--shadow-light-footer);
+}
+
+.icon {
+    margin-right: 12px;
+    color: var(--accent-color);
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+.footer-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    line-height: 1.2;
+}
+
+/* Evitamos subrayado en neomorfismo (queda mejor cambiar el color) */
+.contact-item:hover .footer-link,
+.footer-link:hover {
+    color: var(--accent-color);
+}
+
+/* 4. Línea separadora como surco grabado */
+.footer-divider {
+    border: none;
+    height: 3px;
+    background: var(--bg-footer);
+    margin: 40px auto 30px auto;
+    max-width: 1200px;
+    border-radius: 5px;
+
+    /* Sombra interna para que parezca tallada */
+    box-shadow:
+        inset 2px 2px 4px var(--shadow-dark-footer),
+        inset -2px -2px 4px var(--shadow-light-footer);
+}
+
+/* Subfooter */
+.sub-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+
+
+@media (min-width: 768px) {
+    .sub-footer {
+        display: table;
+        width: 100%;
+        align-items: center;
+    }
+
+    .copyright {
+        display: table-cell;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .legal-links {
+        display: table-cell;
+        text-align: right;
+        vertical-align: middle;
+    }
+}
+
+@media (max-width: 767px) {
+    .sub-footer {
+        text-align: center;
+    }
+
+    .copyright {
+        margin-bottom: 20px;
+    }
+
+    .legal-separator {
+        display: none;
+    }
+
+    .legal-link {
+        display: inline-block;
+        margin: 10px;
+    }
+}
+
+/* 5. Enlaces legales como "píldoras" clicables */
+.legal-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin: 10px 8px;
+    padding: 8px 15px;
+    border-radius: 12px;
+    background: var(--bg-footer);
+    transition: all 0.2s ease;
+    display: inline-block;
+
+    /* Relieve suave */
+    box-shadow:
+        3px 3px 6px var(--shadow-dark-footer),
+        -3px -3px 6px var(--shadow-light-footer);
+}
+
+.legal-link:hover {
+    color: var(--text-primary);
+}
+
+/* Hundido al clicar enlaces legales */
+.legal-link:active {
+    box-shadow:
+        inset 3px 3px 6px var(--shadow-dark-footer),
+        inset -3px -3px 6px var(--shadow-light-footer);
+}
+
+/* Como ahora son botones, el separador de texto ya no es necesario, pero lo escondemos con gracia por si acaso */
+.legal-separator {
+    display: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE HEADER Y NAVEGACIÓN
+   ========================================================================== */
+@media (max-width: 992px) {
+    .neu-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.2rem 5%;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.6rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Oculta scrollbar en Firefox */
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Oculta scrollbar en Chrome/Safari/Edge */
+    }
+
+    .nav-links a {
+        white-space: nowrap;
+        font-size: 0.95rem;
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+/* ==========================================================================
+   BOTÓN FLOTANTE DE WHATSAPP (ESTILO NEOMÓRFICO COHERENTE)
+   ========================================================================== */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--bg-color); /* Tu color crema base */
+    border-radius: 50%;                /* Círculo perfecto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #25d366;                    /* Verde de WhatsApp */
+    font-size: 35px;
+    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 
+        6px 6px 12px var(--shadow-dark),
+        -6px -6px 12px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+}
+
+.whatsapp-float:active {
+    transform: translateY(0);
+    box-shadow: 
+        inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}

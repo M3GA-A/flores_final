@@ -1,0 +1,159 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <header class="neu-header">
+    <div class="logo">
+      <h1>Tina plena de flors</h1>
+    </div>
+    <nav class="nav-links">
+      <a href="/">Portada</a>
+      <a href="/nosotros">Sobre Nosotros</a>
+      <a href="/bodas">Bodas</a>
+      <a href="/eventos">Eventos</a>
+      <a href="/flores" class="active">Flores</a>
+      <a href="/encargos">Encargos/Entregas</a>
+      <a href="/contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="categorias-rapidas">
+      <a href="?categoria=ramos-baratos" class="cat-item neu-box {% if request.args.get('categoria') == 'ramos-baratos' %}neu-box-inset{% endif %}">
+        <div class="cat-icon flex-center"><img src="/static/img/Iconos/flores.png" alt=""></div>
+        <span>Ramos de 15€ a 50€</span>
+      </a>
+      <a href="?categoria=peonias" class="cat-item neu-box {% if request.args.get('categoria') == 'peonias' %}neu-box-inset{% endif %}">
+        <div class="cat-icon flex-center"><img src="/static/img/Iconos/tulip_icon-icons.com_55450.ico" alt=""></div>
+        <span>Ramos de Peonías</span>
+      </a>
+      <a href="?categoria=rosas" class="cat-item neu-box {% if request.args.get('categoria') == 'rosas' %}neu-box-inset{% endif %}">
+        <div class="cat-icon flex-center"><img src="/static/img/Iconos/flower_plant_nature_rose_icon_232525.ico" alt=""></div>
+        <span>Ramos de Rosas</span>
+      </a>
+      <a href="?categoria=caja" class="cat-item neu-box {% if request.args.get('categoria') == 'caja' %}neu-box-inset{% endif %}">
+        <div class="cat-icon flex-center"><img class="icono-caja" src="/static/img/Iconos/flower-pot_39157.ico" alt=""></div>
+        <span>Flores en Caja</span>
+      </a>
+      <a href="?categoria=maceta" class="cat-item neu-box {% if request.args.get('categoria') == 'maceta' %}neu-box-inset{% endif %}">
+        <div class="cat-icon flex-center"><img src="/static/img/Iconos/flower_tree_nature_sunflower_plant_icon_258400.ico" alt=""></div>
+        <span>Plantas en Maceta</span>
+      </a>
+      <a href="?categoria=preservadas" class="cat-item neu-box {% if request.args.get('categoria') == 'preservadas' %}neu-box-inset{% endif %}">
+        <div class="cat-icon flex-center"><img src="/static/img/Iconos/flores.png" alt=""></div>
+        <span>Plantas preservadas</span>
+      </a>
+    </section>
+
+    <div class="tienda-layout">
+
+      <aside class="filtros-sidebar neu-box">
+        <form action="{{ url_for('flores') }}" method="GET">
+          <!-- Mantenemos la categoría si se usó arriba y el cliente usa además el sidebar -->
+          {% if request.args.get('categoria') %}
+          <input type="hidden" name="categoria" value="{{ request.args.get('categoria') }}">
+          {% endif %}
+          
+          <div class="sidebar-header">
+            <h3>Filtros</h3>
+            <a href="/flores" class="clear-filters" id="btn-limpiar-filtros" style="cursor: pointer; text-decoration: none;">Limpiar ×</a>
+          </div>
+
+          <div class="filtro-grupo">
+            <input type="checkbox" id="drop-precio" class="filtro-toggle" checked>
+            <label for="drop-precio" class="filtro-label">Precio</label>
+            <div class="filtro-contenido">
+              <div class="rango-inputs">
+                <input type="number" name="precio_desde" id="precio-desde" placeholder="Desde €" class="neu-box-inset" value="{{ request.args.get('precio_desde', '') }}">
+                <input type="number" name="precio_hasta" id="precio-hasta" placeholder="Hasta €" class="neu-box-inset" value="{{ request.args.get('precio_hasta', '') }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="filtro-grupo">
+            <input type="checkbox" id="drop-flores" class="filtro-toggle">
+            <label for="drop-flores" class="filtro-label">Flores</label>
+            <div class="filtro-contenido">
+              <label class="check-container">Rosas <input type="checkbox" name="flor" value="Rosas" class="filtro-flor" {% if 'Rosas' in request.args.getlist('flor') %}checked{% endif %}><span class="checkmark neu-box"></span></label>
+              <label class="check-container">Peonías <input type="checkbox" name="flor" value="Peonías" class="filtro-flor" {% if 'Peonías' in request.args.getlist('flor') %}checked{% endif %}><span
+                class="checkmark neu-box"></span></label>
+              <label class="check-container">Tulipanes <input type="checkbox" name="flor" value="Tulipanes" class="filtro-flor" {% if 'Tulipanes' in request.args.getlist('flor') %}checked{% endif %}><span
+                class="checkmark neu-box"></span></label>
+            </div>
+          </div>
+
+          <div class="filtro-grupo">
+            <input type="checkbox" id="drop-packaging" class="filtro-toggle">
+            <label for="drop-packaging" class="filtro-label">Envoltorio</label>
+            <div class="filtro-contenido">
+              <label class="check-container">Papel Kraft <input type="checkbox" name="envoltorio" value="Papel Kraft" class="filtro-envoltorio" {% if 'Papel Kraft' in request.args.getlist('envoltorio') %}checked{% endif %}><span
+                class="checkmark neu-box"></span></label>
+              <label class="check-container">Caja Premium <input type="checkbox" name="envoltorio" value="Caja Premium" class="filtro-envoltorio" {% if 'Caja Premium' in request.args.getlist('envoltorio') %}checked{% endif %}><span
+                class="checkmark neu-box"></span></label>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-aplicar-filtros" class="btn-aplicar neu-box">Aplicar Filtros</button>
+        </form>
+      </aside>
+
+      <section class="productos-seccion">
+        <div class="productos-header neu-box-inset">
+          <h2>Flores Disponibles:</h2>
+          <div class="ordenar-opciones">
+            <span>Mostrar: <strong>{{ total_mostrados }} ud.</strong></span>
+            <span>Ordenar por: <strong>Novedades</strong></span>
+          </div>
+        </div>
+
+        <div class="productos-grid">
+        
+          {% for producto in productos %}
+        
+          <div class="producto-card neu-box">
+            <div class="prod-foto-wrapper">
+              <img src="{{ producto.imagen_url }}" alt="{{ producto.nombre }}">
+        
+              {% if producto.etiqueta %}
+              <span class="tag-nuevo">{{ producto.etiqueta }}</span>
+              {% endif %}
+            </div>
+        
+            <div class="prod-info">
+              <h3>{{ producto.nombre }}</h3>
+              <p class="codigo">Código: {{ producto.codigo }}</p>
+        
+              <div class="prod-footer">
+                <div class="prod-acciones">
+                  <a class="btn-contacto-producto neu-box" href="/contacto?ref={{ producto.codigo }}">
+                    <i class="fa-regular fa-envelope"></i>
+                    Consultar
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          {% else %}
+          <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: var(--text-light);">
+            <p>No hemos encontrado flores que coincidan con estos filtros.</p>
+          </div>
+          {% endfor %}
+        
+        </div>
+      </section>
+    </div>
+
+    <section class="banner-suscripcion neu-box">
+      <div class="suscripcion-overlay">
+        <h2>Únete a la Familia Tina plena de flors</h2>
+        <p>Y sé el primero en conocer nuestras novedades, promociones y ofertas especiales</p>
+        <form class="suscripcion-form">
+          <input type="email" placeholder="DIRECCIÓN DE CORREO ELECTRÓNICO" required class="neu-box-inset">
+          <button type="submit" class="btn-enviar neu-box">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    
+  </main>
+{% endblock %}

@@ -1,0 +1,802 @@
+/* --- GALERÍA (CSS GRID + EFECTOS NEOMÓRFICOS) --- */
+.galeria {
+    padding: 4rem 5%;
+    background: var(--bg-color);
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--accent);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Tarjetas de Galería Extruidas */
+.card {
+    padding: 1.5rem;
+    /* Un poco más de padding para el relieve */
+    text-align: center;
+    transition: transform 0.3s ease;
+    background: var(--bg-color);
+    border-radius: 25px;
+    box-shadow:
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+}
+
+.card h3 {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--text-main);
+    font-style: italic;
+}
+
+/* Botón general */
+boton,
+button {
+    color: var(--accent);
+    background: var(--bg-color);
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    /* Botón hacia afuera */
+    box-shadow:
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+}
+
+boton:active,
+button:active {
+    /* Botón pulsado */
+    box-shadow:
+        inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}
+
+/* Efectos en las Fotos: Marco hundido (Inset) */
+.foto-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--bg-color);
+    padding: 8px;
+    /* Crea un marco interno */
+
+    box-shadow:
+        inset 6px 6px 12px var(--shadow-dark),
+        inset -6px -6px 12px var(--shadow-light);
+}
+
+.foto-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    /* Redondea la imagen dentro del marco */
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: brightness(0.9);
+}
+
+.card:hover .foto-container img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* --- BODAS (HERO VIDEO SE QUEDA IGUAL AL SER OVERLAY) --- */
+.boda-hero-video {
+    position: relative;
+    height: 56vh;
+    min-height: 520px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    text-align: center;
+    background: var(--text-main);
+}
+
+.boda-video-fondo,
+.boda-capa-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.boda-video-fondo {
+    object-fit: cover;
+}
+
+.boda-capa-video {
+    background: rgba(34, 28, 29, 0.48);
+}
+
+.boda-contenido-video {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, 90%);
+    padding: 3rem 0;
+}
+
+.boda-contenido-video h2 {
+    margin-bottom: 1.2rem;
+    color: #ffffff;
+    font-size: clamp(2.5rem, 5vw, 3rem); 
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.boda-contenido-video p {
+    max-width: 980px;
+    margin: 0 auto 0.75rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(1rem, 1.5vw, 2rem);
+    line-height: 1.32;
+    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Botón de boda adaptado (Neomorfismo sobre fondo oscuro es complicado, 
+   lo dejamos como un botón tipo pastilla flotante) */
+.boton-boda {
+    display: inline-block;
+    margin-top: 1.35rem;
+    padding: 1rem 2.55rem;
+    color: var(--accent);
+    background: var(--bg-color);
+    font-size: clamp(1rem, 1.6vw, 1.22rem);
+    font-weight: 600;
+    border-radius: 30px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.boton-boda:active {
+    transform: scale(0.95);
+}
+
+/* PLAN BODA: Contenedor principal neomórfico */
+.plan-boda {
+    width: min(1920px, calc(100% - clamp(38px, 6vw, 122px)));
+    margin: 4rem auto;
+    padding: clamp(6rem, 8vw, 10.5rem) clamp(3rem, 4vw, 5rem) clamp(4rem, 6vw, 5.2rem);
+    background: var(--bg-color);
+    border-radius: 40px;
+
+    /* Reemplazamos los bordes rosas por una sombra gigante */
+    box-shadow:
+        20px 20px 40px var(--shadow-dark),
+        -20px -20px 40px var(--shadow-light);
+}
+
+.plan-boda-intro {
+    max-width: 1160px;
+    margin: 0 auto clamp(3.7rem, 5.5vw, 5.5rem);
+    text-align: center;
+}
+
+.plan-boda-intro h2 {
+    margin-bottom: 1.35rem;
+    color: var(--text-main);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-style: italic;
+    line-height: 1.05;
+}
+
+.plan-boda-intro p {
+    max-width: 1120px;
+    margin: 0 auto;
+    color: var(--text-light);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.35;
+}
+
+.pasos-boda {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: clamp(1.5rem, 2.4vw, 3rem);
+    max-width: 1640px;
+    margin: 0 auto;
+}
+
+/* Pasos individuales como tarjetas elevadas */
+.paso-boda {
+    min-height: 385px;
+    padding: clamp(1.7rem, 2vw, 2.45rem);
+    background: var(--bg-color);
+    border-radius: 25px;
+
+    box-shadow:
+        8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+}
+
+/* Paso Destacado: En lugar de cambiar de color, se hunde (Inset) */
+.paso-boda.destacado {
+    box-shadow:
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
+}
+
+.paso-boda span {
+    display: block;
+    margin-bottom: 1.1rem;
+    color: var(--text-light);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.paso-boda.destacado span {
+    color: var(--accent);
+    /* Resaltamos el número en color */
+}
+
+.paso-boda h3 {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 600;
+}
+
+.paso-boda p {
+    color: var(--text-light);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    line-height: 1.42;
+}
+
+/* GALERÍA DE BODAS (CARRUSEL) */
+.galeria-bodas {
+    margin: clamp(4rem, 6vw, 6rem) auto 0;
+}
+
+.galeria-bodas-encabezado {
+    max-width: 900px;
+    margin-bottom: 1.8rem;
+}
+
+.galeria-bodas-encabezado h2 {
+    margin-bottom: 0.55rem;
+    color: var(--text-main);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-style: italic;
+    line-height: 1.05;
+}
+
+.galeria-bodas-encabezado p {
+    max-width: 760px;
+    color: var(--text-light);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+}
+
+.carrusel-fotos {
+    display: grid;
+    grid-auto-columns: minmax(280px, 31%);
+    grid-auto-flow: column;
+    gap: clamp(1.5rem, 2vw, 2rem);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 1rem 0 2rem;
+    /* Espacio extra para las sombras */
+    scroll-padding-inline: 0;
+    scroll-snap-type: inline mandatory;
+}
+
+/* Fotos del carrusel con marco hundido */
+.carrusel-fotos figure {
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: var(--bg-color);
+    border-radius: 20px;
+    padding: 8px;
+    scroll-snap-align: start;
+
+    box-shadow:
+        inset 6px 6px 12px var(--shadow-dark),
+        inset -6px -6px 12px var(--shadow-light);
+}
+
+.carrusel-fotos a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: zoom-in;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.carrusel-fotos img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.carrusel-fotos figure:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.04);
+}
+
+.carrusel-fotos::-webkit-scrollbar {
+    height: 9px;
+}
+
+.carrusel-fotos::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.carrusel-fotos::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    background: rgba(58, 46, 48, 0.9);
+}
+
+.lightbox:target {
+    display: flex;
+}
+
+.lightbox img {
+    display: block;
+    max-width: min(92vw, 1180px);
+    max-height: 86vh;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.6);
+}
+
+/* Botón cerrar flotante */
+.cerrar-lightbox {
+    position: absolute;
+    top: clamp(1rem, 3vw, 2rem);
+    right: clamp(1rem, 3vw, 2rem);
+    padding: 10px 20px;
+    color: var(--accent);
+    background: var(--bg-color);
+    border-radius: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   SECCIÓN: SERVICIOS DE DECORACIÓN FLORAL (NEOMORFISMO)
+   ========================================================================== */
+
+.servicios-boda {
+    padding: 2rem 5%;
+    background: var(--bg-color);
+    /* Fondo base obligatorio para el camuflaje 3D */
+}
+
+/* --- INTRODUCCIÓN --- */
+.servicios-boda-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+}
+
+.servicios-boda-intro h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.servicios-boda-intro p {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* --- GRID DE SERVICIOS --- */
+.servicios-boda-grid {
+    display: grid;
+    /* Grid automático que se adapta a móviles y escritorio sin media queries complejas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3.5rem;
+    /* Espacio amplio para que las sombras no choquen */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- TARJETAS INDIVIDUALES (Hacia afuera) --- */
+.servicio-boda-card {
+    background: var(--bg-color);
+    padding: 2.5rem 2rem;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    /* Efecto extruido principal */
+    box-shadow:
+        12px 12px 24px var(--shadow-dark),
+        -12px -12px 24px var(--shadow-light);
+}
+
+.servicio-boda-card:hover {
+    transform: translateY(-8px);
+    /* La tarjeta flota al pasar el ratón */
+    box-shadow:
+        16px 16px 32px var(--shadow-dark),
+        -16px -16px 32px var(--shadow-light);
+}
+
+/* --- IMÁGENES CON MARCO HUNDIDO (Inset) --- */
+.servicio-boda-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+
+    /* Truco neomórfico directo en la imagen: 
+       Creamos un borde virtual con padding y hundimos la caja */
+    padding: 10px;
+    background: var(--bg-color);
+    box-shadow:
+        inset 6px 6px 12px var(--shadow-dark),
+        inset -6px -6px 12px var(--shadow-light);
+
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: brightness(0.95);
+}
+
+.servicio-boda-card:hover img {
+    transform: scale(1.02);
+    /* Ligero zoom interior */
+    filter: brightness(1.05);
+    /* Ilumina la flor */
+}
+
+/* --- TEXTOS DE LA TARJETA --- */
+.servicio-boda-card h3 {
+    color: var(--accent);
+    /* Resaltamos el título con tu rosa */
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.servicio-boda-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    flex-grow: 1;
+    /* Si una descripción es más corta que otra, los elementos no se descolocan */
+}
+
+/* --- RESPONSIVE (MÓVILES) --- */
+@media (max-width: 768px) {
+    .servicios-boda {
+        padding: 4rem 5%;
+    }
+
+    .servicios-boda-grid {
+        gap: 2.5rem;
+    }
+
+    .servicio-boda-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .servicio-boda-card img {
+        height: 200px;
+        /* Reducimos la altura de la foto en pantallas pequeñas */
+    }
+}
+
+/* RESEÑAS GOOGLE NEOMÓRFICAS */
+.resenas-google {
+    margin: clamp(4.5rem, 7vw, 7rem) auto 0;
+    padding: clamp(3rem, 4vw, 4rem) 5%;
+    background: var(--bg-color);
+    /* Obligatorio para fundirse con las tarjetas */
+}
+
+.google-resumen {
+    text-align: center;
+}
+
+.google-resumen h2 {
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+}
+
+.estrellas {
+    color: #fbbc05;
+    /* Se mantiene amarillo Google */
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.google-resumen p {
+    margin: 0.45rem 0 0.8rem;
+    color: var(--text-main);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.google-logo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.08em;
+}
+
+.g-azul {
+    color: #4285f4;
+}
+
+.g-rojo {
+    color: #ea4335;
+}
+
+.g-amarillo {
+    color: #fbbc05;
+}
+
+.g-verde {
+    color: #34a853;
+}
+
+.resenas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(2.5rem, 4vw, 4rem);
+    max-width: 1500px;
+    margin: clamp(3rem, 5vw, 5rem) auto 0;
+}
+
+/* Tarjeta individual de reseña extruida */
+.resena-google {
+    min-width: 0;
+    background: var(--bg-color);
+    padding: 2.5rem 2rem;
+    border-radius: 25px;
+
+    box-shadow:
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+}
+
+.resena-cabecera {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr) 28px;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Avatares extruidos */
+.avatar {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    /* Sombra para integrar el círculo */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.avatar.foto {
+    background: var(--text-main);
+}
+
+.avatar.morado {
+    background: #7e57c2;
+}
+
+.avatar.azul {
+    background: #5c6bc0;
+}
+
+.resena-google h3 {
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.resena-google span {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.google-mini {
+    color: #4285f4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.45rem;
+}
+
+.estrellas.pequenas {
+    margin: 1rem 0 0.7rem;
+    font-size: 1.35rem;
+}
+
+.resena-google p {
+    color: var(--text-light);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.5;
+}
+
+/* Botón de 'leer más' neomórfico mini */
+.resena-google a {
+    display: inline-block;
+    margin-top: 1.2rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 12px;
+
+    box-shadow:
+        4px 4px 8px var(--shadow-dark),
+        -4px -4px 8px var(--shadow-light);
+}
+
+.resena-google a:active {
+    box-shadow:
+        inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 900px) {
+
+
+    .split-page,
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 55vh;
+    }
+
+    .hero-video-portada {
+        min-height: 560px;
+    }
+
+    .hero h2 {
+        font-size: 2.25rem;
+    }
+
+    .page-hero {
+        padding: 3rem 1.5rem;
+    }
+
+    .boda-hero-video {
+        height: auto;
+        min-height: 620px;
+    }
+
+    .pasos-boda {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .paso-boda {
+        min-height: 310px;
+    }
+
+    .carrusel-fotos {
+        grid-auto-columns: minmax(240px, 48%);
+    }
+
+    .resenas-grid {
+        grid-template-columns: 1fr;
+        max-width: 680px;
+    }
+
+    .plan-boda {
+        width: min(100% - 28px, 900px);
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .hero-content {
+        padding: 2rem;
+    }
+
+    .hero-content-video h2 {
+        font-size: 3rem;
+    }
+
+    .hero-content-video p {
+        font-size: 1.25rem;
+    }
+
+    .banner-rosgaly {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+    }
+
+    .banner-resenas,
+    .galeria,
+    .ubicacion {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .boda-contenido-video h1 {
+        font-size: 3rem;
+    }
+
+    .boda-contenido-video p {
+        font-size: 1.25rem;
+    }
+
+    .boton-boda {
+        width: 100%;
+        padding: 1.1rem 1.3rem;
+        box-sizing: border-box;
+    }
+
+    .pasos-boda {
+        grid-template-columns: 1fr;
+    }
+
+    .paso-boda {
+        min-height: auto;
+    }
+
+    .carrusel-fotos {
+        grid-auto-columns: 82%;
+    }
+
+    .plan-boda {
+        width: 90%;
+        border-radius: 25px;
+        /* Bordes algo más pequeños en móvil */
+    }
+}

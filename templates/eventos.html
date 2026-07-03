@@ -1,0 +1,120 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <header class="neu-header">
+        <div class="logo">
+            <a href="/">
+                <h1>Tina plena de flors</h1>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="/">Portada</a>
+            <a href="/nosotros">Sobre Nosotros</a>
+            <a href="/bodas">Bodas</a>
+            <a href="/eventos" class="active">Eventos</a>
+            <a href="/flores">Flores</a>
+            <a href="/encargos">Encargos/Entregas</a>
+            <a href="/contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-eventos flex-center">
+            <div class="hero-content-simple">
+                <h2 class="titulo-elegante">Eventos con Historia</h2>
+                <p class="subtitulo-floral">Transformamos espacios <h2>&</h2> creamos recuerdos.</p>
+            </div>
+        </section>
+
+        <section class="alma-tina">
+            <div class="historia-container">
+                <div class="historia-texto">
+                    <h2 class="titulo-seccion">Detrás de cada pétalo</h2>
+                    <p>Isa y Alba ponen su corazón en cada montaje. Desde la primera idea hasta el último detalle en el lugar del evento, nos encargamos de que la esencia de las flores hable por ti.</p>
+                    <p class="cita">"No solo decoramos, creamos escenarios para momentos inolvidables."</p>
+                </div>
+                <div class="historia-img-multiple">
+                    <div class="foto-trabajo neu-box">
+                        <img src="/static/img/nosotras/Alba_2.webp" alt="Isa trabajando">
+                        <p class="pie-foto">Manos a la obra</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="galeria-eventos">
+            <h2 class="titulo-seccion">Momentos Mágicos</h2>
+
+            <div class="eventos-full-container">
+                
+                <!-- Evento 1 -->
+                <article class="evento-full-card">
+                    <div class="evento-full-img">
+                        <img src="/static/img/nosotras/nosotras_4.webp" alt="Trabajo en equipo">
+                    </div>
+                    <div class="evento-full-info">
+                        <h3>La diversión desde el principio</h3>
+                        <p class="subtitle-destacado">Trabajar juntas siempre es mejor</p>
+                        <p>En cada proyecto que emprendemos, la alegría y la complicidad son nuestros principales motores. Creemos firmemente que la buena energía se transmite a las flores, dando como resultado decoraciones vibrantes, frescas y llenas de vida.</p>
+                        <ul class="lista-valores">
+                            <li><strong>Pasión compartida:</strong> Disfrutamos cada paso del proceso creativo, desde el diseño hasta el montaje final.</li>
+                            <li><strong>Dedicación exclusiva:</strong> Cuidamos los pequeños detalles que marcan la diferencia en tu evento.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Evento 2 (Tarjeta reflejada: reverse) -->
+                <article class="evento-full-card reverse">
+                    <div class="evento-full-img">
+                        <img src="/static/img/bodas/boda_13.png" alt="Bodas en la naturaleza">
+                    </div>
+                    <div class="evento-full-info">
+                        <h3>Bodas en la Naturaleza</h3>
+                        <p class="subtitle-destacado">Color y alegría en rincones únicos</p>
+                        <p>Integramos nuestras composiciones florales con el entorno natural, respetando la belleza del paisaje y realzándola con toques de color precisos. Creamos atmósferas de ensueño al aire libre, perfectas para celebrar el amor bajo el cielo abierto.</p>
+                        <ul class="lista-valores">
+                            <li><strong>Armonía visual:</strong> Diseños que fluyen de manera orgánica con el entorno.</li>
+                            <li><strong>Estilo Silvestre:</strong> Composiciones desestructuradas que aportan frescura y romanticismo.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Evento 3 -->
+                <article class="evento-full-card">
+                    <div class="evento-full-img">
+                        <img src="/static/img/eventos/santJordi.webp" alt="Detalle Floral">
+                    </div>
+                    <div class="evento-full-info">
+                        <h3>Sant Jordi & Fechas Señaladas</h3>
+                        <p class="subtitle-destacado">Muestra tu amor mediante una flor</p>
+                        <p>Celebramos las tradiciones con la elegancia que merecen. En fechas especiales, preparamos selecciones exclusivas de flores de temporada, cuidando minuciosamente el empaquetado y la presentación para que tu regalo sea inolvidable.</p>
+                        <ul class="lista-valores">
+                            <li><strong>Tradición y Calidad:</strong> Flores con frescura garantizada para el día perfecto.</li>
+                            <li><strong>Presentación Premium:</strong> Detalles y envoltorios que enamoran a primera vista.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Evento 4 (Tarjeta reflejada: reverse) -->
+                <article class="evento-full-card reverse">
+                    <div class="evento-full-img">
+                        <img src="/static/img/eventos/espacio con encanto.webp" alt="Rincón floral de tina">
+                    </div>
+                    <div class="evento-full-info">
+                        <h3>Rincones con Encanto</h3>
+                        <p class="subtitle-destacado">Detalles decorativos que marcan la diferencia</p>
+                        <p>Transformamos espacios vacíos o convencionales en puntos focales llenos de magia. Ya sea para un evento corporativo, un escaparate o una fiesta privada, diseñamos instalaciones florales que capturan miradas y generan conversación.</p>
+                        <ul class="lista-valores">
+                            <li><strong>Creatividad sin límites:</strong> Instalaciones florales a medida para cualquier espacio.</li>
+                            <li><strong>Impacto Visual:</strong> Escenarios perfectos y acogedores para tus fotografías.</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+    </main>
+{% endblock %}

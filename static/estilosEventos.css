@@ -1,0 +1,299 @@
+/* ==========================================================================
+   PESTAÑA EVENTOS.HTML - ESTILOS NEOMÓRFICOS (Estilo Bodas, Recto)
+   ========================================================================== */
+
+/* --- HERO EVENTOS --- */
+.hero-eventos {
+    min-height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--bg-color);
+    padding: 3rem 2rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    /* Eliminado el border-bottom plano, el neomorfismo no suele usar bordes sólidos */
+}
+
+.hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.6;
+    /* Un poco de opacidad para no competir con la tarjeta */
+}
+
+/* Tarjeta flotante del Hero arreglada */
+.hero-content-simple {
+    padding: 2.5rem 4rem;
+    background: var(--bg-color);
+    /* Fondo sólido igual a la base */
+    border-radius: 30px;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    z-index: 1;
+
+    /* Sombras neomórficas restauradas (fuera la sombra negra dura) */
+    box-shadow:
+        15px 15px 30px var(--shadow-dark),
+        -15px -15px 30px var(--shadow-light);
+}
+
+.titulo-elegante {
+    font-size: clamp(1.5rem, 2.5vw, 4rem);
+    color: var(--text-main);
+    /* Cambiado a texto principal para mejor contraste */
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.subtitulo-floral {
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    color: var(--accent);
+    /* Invertido con el título para dar un toque de color elegante */
+    font-weight: 600;
+}
+
+/* --- SECCIÓN HISTORIA (ALMA TINA) --- */
+.alma-tina {
+    padding: 4rem 5%;
+    background: var(--bg-color);
+}
+
+.alma-tina .historia-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.alma-tina .historia-texto {
+    flex: 1;
+    min-width: 320px;
+    padding: 2.5rem;
+    background: var(--bg-color);
+    border-radius: 30px;
+    box-shadow:
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+}
+
+.cita {
+    font-style: italic;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--text-main);
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    background: var(--bg-color);
+    border-radius: 15px;
+
+    /* La cita ahora es un bloque hundido en lugar de tener un borde sólido */
+    box-shadow:
+        inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}
+
+.historia-img-multiple {
+    flex: 1;
+    min-width: 320px;
+    max-width: 450px;
+}
+
+.foto-trabajo {
+    padding: 15px;
+    /* Un poco más de espacio para el marco */
+    background: var(--bg-color);
+    border-radius: 25px;
+    box-shadow:
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+    text-align: center;
+}
+
+.foto-trabajo img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.pie-foto {
+    margin-top: 1rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* --- GALERÍA EVENTOS (ESTILO BODAS) --- */
+.galeria-eventos {
+    padding: 4rem 5%;
+    background: var(--bg-color);
+}
+
+/* --- INTRODUCCIÓN A LA GALERÍA DE EVENTOS --- */
+.evento-info-intro {
+    max-width: 900px;
+    margin: 0 auto 3.5rem auto;
+    padding: 2.5rem 3rem;
+    background: var(--bg-color);
+    border-radius: 25px;
+
+    /* Efecto bajorrelieve (hundido) para el texto de introducción */
+    box-shadow:
+        inset 6px 6px 12px var(--shadow-dark),
+        inset -6px -6px 12px var(--shadow-light);
+}
+
+.evento-info-intro p {
+    margin-bottom: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* --- GALERÍA EVENTOS: TARJETAS COMPLETAS Y REFLEJADAS --- */
+.eventos-full-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjetas principales de eventos */
+.evento-full-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+    padding: 40px;
+    background: var(--bg-color);
+    border-radius: 40px;
+    /* Bordes un poco más suaves */
+    box-shadow:
+        15px 15px 30px var(--shadow-dark),
+        -15px -15px 30px var(--shadow-light);
+    transition: transform 0.3s ease;
+}
+
+.evento-full-card.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Elevación al pasar el ratón */
+.evento-full-card:hover {
+    transform: translateY(-5px);
+    /* Intensificamos ligeramente la sombra al flotar */
+    box-shadow:
+        20px 20px 40px var(--shadow-dark),
+        -20px -20px 40px var(--shadow-light);
+}
+
+/* Contenedor de la foto transformado en un marco hundido */
+.evento-full-img {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--bg-color);
+    padding: 12px;
+    border-radius: 25px;
+
+    /* El marco se hunde, la foto queda dentro */
+    box-shadow:
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
+}
+
+.evento-full-img img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: brightness(0.9);
+}
+
+.evento-full-card:hover .evento-full-img img {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+/* Contenedor del texto descriptivo */
+.evento-full-info {
+    flex: 1.4;
+    padding: 10px 25px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.evento-full-info h3 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+/* Línea sutil decorativa bajo el título (estilo bajorrelieve) */
+.evento-full-info h3::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    /* Un poco más gruesa para que se note el relieve */
+    background: var(--accent);
+    margin-top: 12px;
+    opacity: 0.6;
+    border-radius: 10px;
+
+    /* Sombra interna para la línea */
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.evento-full-info p {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 2;
+    color: var(--text-light);
+    margin-bottom: 18px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .alma-tina .historia-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cita {
+        padding: 1.5rem;
+    }
+
+    .hero-content-simple {
+        padding: 2rem;
+        width: 90%;
+    }
+
+    .evento-full-card,
+    .evento-full-card.reverse {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+
+    .evento-full-info {
+        text-align: center;
+        padding: 0;
+    }
+
+    .evento-full-info h3::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

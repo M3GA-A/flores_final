@@ -1,0 +1,134 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+        <!-- POPUP FLORAL -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="popup-container">
+        {% for msg in messages %}
+            <div class="popup-floral">
+            <span class="icono-popup">🌷</span>
+            <p>{{ msg }}</p>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- HEADER -->
+    <header class="neu-header">
+        <div class="logo">
+            <h1>Tina plena de flors</h1>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/">Portada</a>
+            <a href="/nosotros">Sobre Nosotros</a>
+            <a href="/bodas">Bodas</a>
+            <a href="/eventos">Eventos</a>
+            <a href="/flores">Flores</a>
+            <a href="/encargos">Encargos/Entregas</a>
+            <a href="/contacto" class="active">Contacto</a>
+        </nav>
+    </header>
+
+
+
+
+    <!-- CONTENIDO -->
+    <main>
+
+        <section class="contacto-section">
+            <h2 class="titulo-seccion">✿ Ponte en contacto con nosotros ✿</h2>
+
+            <div class="contacto-grid">
+
+                <!-- TELÉFONO -->
+                <div class="contact-card neu-box">
+                    <div class="icono-contacto"><i class="fa-solid fa-phone"></i></div>
+                    <h3>Teléfono</h3>
+                    <p>+34 667 602 825</p>
+                    <span>Lunes a viernes: De 17:00 a 20:00 horas. <br>
+                    Sábados: De 10:00 a 13:00 horas.</span>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="contact-card neu-box">
+                    <div class="icono-contacto"><i class="fa-solid fa-envelope"></i></div>
+                    <h3>Email</h3>
+                    <p>tinaplenadeflors@gmail.com</p>
+                    <span>Respondemos en menos de 24h</span>
+                </div>
+
+                <!-- INSTAGRAM -->
+                <div class="contact-card neu-box">
+                    <div class="icono-contacto"><i class="fa-brands fa-instagram"></i></div>
+                    <h3>Instagram</h3>
+                    <p>@tinaplenadeflors</p>
+                    <span>Síguenos para inspiración floral</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FORMULARIO DE CONTACTO -->
+<section class="formulario-contacto">
+
+    <div class="formulario-wrapper neu-box">
+
+        <h2>✿ Envíanos un mensaje ✿</h2>
+
+        <form action="{{ url_for('guardar_contacto') }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="form-grid">
+
+                <div class="campo-formulario">
+                    <label for="nombre">Nombre *</label>
+                    <input type="text" id="nombre" name="nombre" maxlength="100" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" maxlength="254" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="telefono">Teléfono (opcional)</label>
+                    <input type="tel" 
+                            id="telefono" name="telefono" maxlength="20"
+                            pattern="^\+?[0-9\s\-_]{9,15}$" 
+                            title="Introduce un número de teléfono válido (entre 9 y 15 dígitos). Puede incluir el prefijo '+'." 
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="asunto">Asunto *</label>
+                    <input type="text" id="asunto" name="asunto" maxlength="150" required>
+                </div>
+
+            </div>
+
+            <div class="campo-formulario">
+                <label for="mensaje">Mensaje *</label>
+                <textarea id="mensaje" name="mensaje" rows="6" maxlength="2000" required></textarea>
+            </div>
+            <div class="contenedor-boton">
+            <button type="submit" class="neu-button boton-enviar">
+                Enviar mensaje 🌸
+            </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+    </main>
+
+{% endblock %}
+

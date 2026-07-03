@@ -1,0 +1,133 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <header class="neu-header">
+      <div class="logo">
+        <a href="/">
+          <h1>Tina plena de flors</h1>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="/">Portada</a>
+        <a href="/nosotros" class="active">Sobre Nosotros</a>
+        <a href="/bodas">Bodas</a>
+        <a href="/eventos">Eventos</a>
+        <a href="/flores">Flores</a>
+        <a href="/encargos">Encargos/Entregas</a>
+        <a href="/contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="historia">
+        <div class="historia-container">
+          <!-- IMAGEN TALLER -->
+          <div class="historia-img">
+            <img
+              src="/static/img/flores/flores_1.png"
+              alt="Taller floral Tina plena de flors"
+            />
+          </div>
+
+          <!-- TEXTO HISTORIA -->
+          <div class="historia-texto">
+            <h2>NUESTRA HISTORIA</h2>
+
+            <p>
+              Tina plena de flors fue fundada en 2021 en Barcelona por madre e
+              hija, unidas por la pasión por las flores y el deseo de
+              transformar emociones en arte floral.
+            </p>
+
+            <p>
+              Nuestro taller es un espacio donde la creatividad florece cada
+              día, creando composiciones únicas con dedicación, sensibilidad y
+              cuidado en cada detalle.
+            </p>
+
+            <p>
+              Desde nuestros inicios, hemos trabajado para ofrecer arreglos
+              florales que transmiten historias, emociones y momentos
+              inolvidables.
+            </p>
+          </div>
+        </div>
+
+        <!-- FUNDADORAS -->
+        <div class="fundadoras">
+          <div class="fundadora-card">
+            <div class="fundadora-media">
+              <img
+                src="/static/img/nosotras/nosotras_4.webp"
+                alt="Madre e hija fundadoras"
+              />
+            </div>
+
+            <div class="fundadora-info">
+              <h3>Madre & Hija</h3>
+
+              <p class="subtitle-destacado">
+                Dos generaciones unidas por un mismo latido: el amor incondicional a la naturaleza y el diseño floral.
+              </p>
+
+              <p>
+                Somos las fundadoras de <em>Tina plena de flors</em>, un proyecto familiar impulsado por el deseo de transformar emociones intangibles en creaciones florales con alma y personalidad.
+              </p>
+
+              <h4>Nuestra filosofía:</h4>
+
+              <p>
+                Creemos firmemente que cada flor cuenta una historia y tiene el
+                poder de evocar un recuerdo. Por eso, huimos de lo genérico y apostamos por diseños a medida:
+              </p>
+              
+              <ul class="lista-valores">
+                  <li><strong>Selección meticulosa:</strong> Escogemos cada tallo con mimo, buscando frescura y calidad.</li>
+                  <li><strong>Diseño artesanal:</strong> Cuidamos con delicadeza cada paso del proceso, creando composiciones exclusivas.</li>
+                  <li><strong>Emoción real:</strong> Nuestra meta es ofrecer diseños que transmitan sentimientos genuinos y dejen una huella inolvidable en quienes los reciben.</li>
+              </ul>
+
+              <div class="logo-container">
+                <img src="/static/img/logo redondo sin fondo blanco.png" alt="Logo" class="logo-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="galeria">
+        <h2 class="titulo-seccion">Lo que nos define</h2>
+        <div class="grid-container">
+          <div class="card neu-box">
+            <div class="foto-container">
+              <img src="/static/img/manos.webp"
+                alt="Diseño artesanal" />
+            </div>
+            <h3>Diseño con Alma</h3>
+          </div>
+      
+          <div class="card neu-box">
+            <div class="foto-container">
+              <img src="/static/img/bodas/boda_5.png"
+                alt="Momentos especiales" />
+            </div>
+            <h3>Momentos Especiales</h3>
+          </div>
+      
+          <div class="card neu-box">
+            <div class="foto-container">
+              <img src="/static/img/flores/ramo_2.png"
+                alt="Frescura diaria" />
+            </div>
+            <h3>Calidad y Frescura</h3>
+          </div>
+        </div>
+      </section>   
+      <section class="hero flex-center">
+        <div class="hero-content neu-box">
+          <h3>¿Quieres un diseño personalizado?</h3>
+          <p>Cuéntanos tu idea y la haremos florecer en nuestro taller.</p>
+          <a href="contacto.html" class="neu-button">Contactar con el Taller</a>
+        </div>
+      </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,212 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <header class="neu-header">
+      <div class="logo">
+        <a href="/">
+          <h1>Tina plena de flors</h1>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="/">Portada</a>
+        <a href="/nosotros">Sobre Nosotros</a>
+        <a href="/bodas" class="active">Bodas</a>
+        <a href="/eventos">Eventos</a>
+        <a href="/flores">Flores</a>
+        <a href="/encargos">Encargos/Entregas</a>
+        <a href="/contacto">Contacto</a>
+      </nav>
+    </header>
+    <main>
+<section class="boda-hero-video">
+    <video class="boda-video-fondo" autoplay muted loop playsinline>
+        <source src="/static/Video2.mp4" type="video/mp4">
+    </video>
+    <div class="boda-capa-video"></div>
+    <div class="boda-contenido-video">
+        <h2>Bodas</h2>
+        <p>Desde el ramo de novia hasta la ultima flor del centro de mesa — cada detalle floral es disenado a medida para reflejar tu historia, tu estilo y la esencia de tu dia mas especial.</p>
+        <a class="boton-boda" href="/contacto">Haz aqui tu solicitud</a>
+    </div>
+</section>
+
+<section class="plan-boda">
+    <div class="plan-boda-intro">
+        <h2>Planificación Floral de la Boda</h2>
+        <p>Planificar una boda puede ser abrumador y estresante. Nuestra misión es que la parte del diseño floral os resulte sencilla y divertida.</p>
+    </div>
+
+    <div class="pasos-boda">
+        <article class="paso-boda destacado">
+            <span>Paso 1</span>
+            <h3>Solicitud en contacto</h3>
+            <p>Comunícate desde la página de contacto, selecciona la opción Bodas y detalla tu pedido, idea o presupuesto para que podamos orientarte mejor.</p>
+        </article>
+        <article class="paso-boda">
+            <span>Paso 2</span>
+            <h3>Sugerencia de diseño</h3>
+            <p>Os enviaremos un presupuesto rápido y nuestras recomendaciones para que se adapten a vuestro estilo, prioridades y visión.</p>
+        </article>
+        <article class="paso-boda destacado">
+            <span>Paso 3</span>
+            <h3>Planificación</h3>
+            <p>Ocho semanas antes del día de la boda nos reuniremos para repasar todos los detalles, revisar cualquier cambio en la logística y ultimar el plan de diseño.</p>
+        </article>
+        <article class="paso-boda">
+            <span>Paso 4</span>
+            <h3>El dia de tu boda</h3>
+            <p>Fuera el estrés, a disfrutar de vuestro día. Nuestro equipo tendrá todos los detalles bajo control y se encargará del montaje floral in situ.</p>
+        </article>
+    </div>
+
+    <section class="galeria-bodas" id="ramos-boda">
+        <div class="galeria-bodas-encabezado">
+            <h2>Ramos de boda</h2>
+            <p>Ideas para ramos de novia con flores frescas, tonos suaves y composiciones hechas a medida.</p>
+        </div>
+        <div class="carrusel-fotos" aria-label="Carrusel de ramos de boda">
+            <figure>
+                <a href="#ramo-boda-1"><img src="/static/img/bodas_fotos/ramos_boda/flores_boda1.jpg" alt="Ramo de boda con flores blancas y verdes"></a>
+            </figure>
+            <figure>
+                <a href="#ramo-boda-2"><img src="/static/img/bodas_fotos/ramos_boda/flores_boda2.jpg" alt="Ramo de boda romantico"></a>
+            </figure>
+            <figure>
+                <a href="#ramo-boda-3"><img src="/static/img/bodas_fotos/ramos_boda/flores_boda3.jpg" alt="Ramo de novia con flores delicadas"></a>
+            </figure>
+            <figure>
+                <a href="#ramo-boda-4"><img src="/static/img/bodas_fotos/ramos_boda/flores_boda4.jpg" alt="Ramo de boda en tonos claros"></a>
+            </figure>
+            <figure>
+                <a href="#ramo-boda-5"><img src="/static/img/bodas_fotos/ramos_boda/flores_boda5.jpg" alt="Ramo de novia floral"></a>
+            </figure>
+        </div>
+    </section>
+
+    <section class="galeria-bodas" id="decoracion-bodas">
+        <div class="galeria-bodas-encabezado">
+            <h2>Decoración de bodas</h2>
+            <p>Centros de mesa, jardines, rincones florales y detalles decorativos para crear una boda con alma.</p>
+        </div>
+        <div class="carrusel-fotos" aria-label="Carrusel de decoracion de bodas">
+            <figure>
+                <a href="#decoracion-boda-1"><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin1.jpg" alt="Decoracion floral de boda en jardin"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-2"><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin2.jpg" alt="Flores para ceremonia de boda"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-3"><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin3.jpg" alt="Decoracion de jardin para boda"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-4"><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin4.jpg" alt="Arreglo floral para boda exterior"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-5"><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin5.jpg" alt="Flores decorativas para boda"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-6"><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin6.jpg" alt="Decoracion floral exterior"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-7"><img src="/static/img/bodas_fotos/decoracion_bodas/boda_mesa1.jpg" alt="Centro de mesa para boda"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-8"><img src="/static/img/bodas_fotos/decoracion_bodas/boda_mesa2.jpg" alt="Mesa de boda con flores"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-9"><img src="/static/img/bodas_fotos/decoracion_bodas/flores_mesa3.jpg" alt="Flores de mesa para boda"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-10"><img src="/static/img/bodas_fotos/decoracion_bodas/flores_mesa4.jpg" alt="Centro floral elegante para boda"></a>
+            </figure>
+            <figure>
+                <a href="#decoracion-boda-11"><img src="/static/img/bodas_fotos/decoracion_bodas/flores_mesa5.jpg" alt="Decoracion de mesa con flores"></a>
+            </figure>
+        </div>
+    </section>
+
+    <div class="lightbox" id="ramo-boda-1"><a class="cerrar-lightbox" href="#ramos-boda">Cerrar</a><img src="/static/img/bodas_fotos/ramos_boda/flores_boda1.jpg" alt="Ramo de boda con flores blancas y verdes ampliado"></div>
+    <div class="lightbox" id="ramo-boda-2"><a class="cerrar-lightbox" href="#ramos-boda">Cerrar</a><img src="/static/img/bodas_fotos/ramos_boda/flores_boda2.jpg" alt="Ramo de boda romantico ampliado"></div>
+    <div class="lightbox" id="ramo-boda-3"><a class="cerrar-lightbox" href="#ramos-boda">Cerrar</a><img src="/static/img/bodas_fotos/ramos_boda/flores_boda3.jpg" alt="Ramo de novia con flores delicadas ampliado"></div>
+    <div class="lightbox" id="ramo-boda-4"><a class="cerrar-lightbox" href="#ramos-boda">Cerrar</a><img src="/static/img/bodas_fotos/ramos_boda/flores_boda4.jpg" alt="Ramo de boda en tonos claros ampliado"></div>
+    <div class="lightbox" id="ramo-boda-5"><a class="cerrar-lightbox" href="#ramos-boda">Cerrar</a><img src="/static/img/bodas_fotos/ramos_boda/flores_boda5.jpg" alt="Ramo de novia floral ampliado"></div>
+
+    <div class="lightbox" id="decoracion-boda-1"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin1.jpg" alt="Decoracion floral de boda en jardin ampliada"></div>
+    <div class="lightbox" id="decoracion-boda-2"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin2.jpg" alt="Flores para ceremonia de boda ampliada"></div>
+    <div class="lightbox" id="decoracion-boda-3"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin3.jpg" alt="Decoracion de jardin para boda ampliada"></div>
+    <div class="lightbox" id="decoracion-boda-4"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin4.jpg" alt="Arreglo floral para boda exterior ampliado"></div>
+    <div class="lightbox" id="decoracion-boda-5"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin5.jpg" alt="Flores decorativas para boda ampliadas"></div>
+    <div class="lightbox" id="decoracion-boda-6"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/boda_jardin6.jpg" alt="Decoracion floral exterior ampliada"></div>
+    <div class="lightbox" id="decoracion-boda-7"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/boda_mesa1.jpg" alt="Centro de mesa para boda ampliado"></div>
+    <div class="lightbox" id="decoracion-boda-8"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/boda_mesa2.jpg" alt="Mesa de boda con flores ampliada"></div>
+    <div class="lightbox" id="decoracion-boda-9"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/flores_mesa3.jpg" alt="Flores de mesa para boda ampliadas"></div>
+    <div class="lightbox" id="decoracion-boda-10"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/flores_mesa4.jpg" alt="Centro floral elegante para boda ampliado"></div>
+    <div class="lightbox" id="decoracion-boda-11"><a class="cerrar-lightbox" href="#decoracion-bodas">Cerrar</a><img src="/static/img/bodas_fotos/decoracion_bodas/flores_mesa5.jpg" alt="Decoracion de mesa con flores ampliada"></div>
+
+    <section class="servicios-boda">
+        <div class="servicios-boda-intro">
+            <h2>Servicios de decoración floral para bodas</h2>
+            <p>En Tina plena de flors te ayudaremos a encontrar los arreglos florales más bonitos y originales que puedas
+                imaginar.</p>
+        </div>
+    
+        <div class="servicios-boda-grid">
+            <article class="servicio-boda-card">
+                <img src="{{ url_for('static', filename='/img/servicios/ramo.jpg') }}" alt="Ramo de novia">
+                <h3>Ramos de novia</h3>
+                <p>Sabemos que ese día es único y por eso tu ramo de novia también es único, como tú. Personalizamos cada
+                    ramo para que sientas lo especial que eres. En Tina plena de flors somos especialistas en ramos de novia
+                    y te asesoraremos para que crees el ramo que tanto deseas.</p>
+            </article>
+            <article class="servicio-boda-card">
+                <img src="{{ url_for('static', filename='/img/servicios/arreglo_iglesia.jpg') }}"
+                    alt="Decoración floral de iglesias">
+                <h3>Decoración floral de iglesias</h3>
+                <p>Te llevamos las flores al lugar donde te cases. Nuestra experiencia nos permite aconsejarte la decoración
+                    floral que hará lucir al máximo tu momento del sí quiero.</p>
+            </article>
+            <article class="servicio-boda-card">
+                <img src="{{ url_for('static', filename='/img/servicios/banquete_decoracion.jpg') }}"
+                    alt="Decoración del salón de boda y banquete">
+                <h3>Decoración del salón de boda y banquete</h3>
+                <p>Los centros de flores para mesas en bodas son el complemento perfecto para decorar la zona del banquete y
+                    crear un escenario único. El equipo de Tina plena de flors cuidará cada montaje floral para que todo
+                    luzca especial.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="resenas-google">
+        <div class="google-resumen">
+            <h2>EXCELENTE</h2>
+            <p>Lee lo que dicen nuestros clientes en tiempo real:</p>
+        </div>
+        
+        <!-- Reseñas inyectadas de forma nativa desde Python / Flask -->
+        <div class="resenas-grid">
+            {% if resenas %}
+                {% for resena in resenas %}
+                <article class="resena-google">
+                    <div class="resena-cabecera">
+                        <div class="avatar foto">{{ resena.author_name[0] }}</div>
+                        <div>
+                            <h3>{{ resena.author_name }}</h3>
+                            <span>{{ resena.relative_time_description }}</span>
+                        </div>
+                        <strong class="google-mini">G</strong>
+                    </div>
+                    <div class="estrellas pequenas">
+                        {% for i in range(resena.rating) %}★{% endfor %}
+                    </div>
+                    <p>"{{ resena.text }}"</p>
+                    <a href="{{ resena.author_url }}" target="_blank" rel="noopener noreferrer">Leer más</a>
+                </article>
+                {% endfor %}
+            {% else %}
+                <p style="text-align: center; width: 100%;">No hay reseñas disponibles en este momento.</p>
+            {% endif %}
+        </div>
+    </section>
+</section>
+</main>
+{% endblock %}

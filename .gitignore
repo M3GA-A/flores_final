@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Entorno virtual
+venv/
+.venv/
+
+# Archivos del sistema (macOS)
+.DS_Store
+
+# VS Code
+.vscode/
+.idea/
+
+# Herramientas de pruebas y cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Registros locales
+*.log
+
+# Configuración y contraseñas secretas ⚠️
+.env
+
+# Datos personales recibidos desde el formulario
+contactos.xlsx

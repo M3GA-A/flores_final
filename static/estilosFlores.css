@@ -1,0 +1,492 @@
+/* ==========================================================================
+   PESTAÑA FLORES.HTML - ESTILOS COMPLETOS Y ANIMACIONES
+   ========================================================================== */
+
+/* --- 1. CATEGORÍAS RÁPIDAS SUPERIORES --- */
+.categorias-rapidas {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 5%;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 85px; /* Se queda debajo del menú principal */
+    z-index: 90; /* Flota por encima de las fotos de los productos */
+    background: var(--bg-color); /* Fondo sólido para tapar lo que pasa por debajo */
+}
+
+.cat-item {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 140px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.cat-item:hover {
+    transform: translateY(-5px);
+}
+
+.cat-item.neu-box-inset {
+    border-bottom: 1px solid var(--accent);
+}
+
+.cat-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--bg-color);
+    border-radius: 50%;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+}
+
+.cat-icon img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.cat-icon img.icono-caja {
+    width: 34px;
+    height: 34px;
+}
+
+.cat-item span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* --- 2. LAYOUT GRID DE LA TIENDA --- */
+.tienda-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    padding: 1rem 5% 4rem;
+    align-items: start;
+}
+
+/* --- 3. BARRA LATERAL DE FILTROS INTERACTIVA --- */
+.filtros-sidebar {
+    padding: 1.5rem;
+    position: sticky;
+    top: 250px; /* Bajamos el tope para que no choque con las categorías rápidas */
+    z-index: 10; /* Asegura que la barra esté por encima de otros elementos */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--shadow-dark);
+    padding-bottom: 0.5rem;
+}
+
+.clear-filters {
+    font-size: 0.85rem;
+    color: var(--accent);
+    cursor: pointer;
+}
+
+.filtro-grupo {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    padding-bottom: 0.8rem;
+}
+
+/* Truco CSS: Esconder los Checkbox que controlan los acordeones */
+.filtro-toggle {
+    display: none;
+}
+
+.filtro-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    color: var(--text-main);
+}
+
+.filtro-label::after {
+    content: '❯';
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    color: var(--accent);
+}
+
+/* Animación de apertura del filtro cuando se hace click en el label */
+.filtro-contenido {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+    padding-top: 0;
+}
+
+.filtro-toggle:checked~.filtro-contenido {
+    max-height: 300px;
+    transition: max-height 0.3s ease-in-out;
+    padding-top: 0.8rem;
+}
+
+.filtro-toggle:checked~.filtro-label::after {
+    transform: rotate(90deg);
+}
+
+/* Inputs de rango de precio */
+.rango-inputs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.rango-inputs input {
+    width: 100%;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+    color: var(--text-main);
+}
+
+/* Checkboxes Neomorfistas Estilizados */
+.check-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 6px;
+}
+
+.check-container input:checked~.checkmark {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark),
+        inset -2px -2px 5px var(--shadow-light);
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--accent);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.check-container input:checked~.checkmark::after {
+    display: block;
+}
+
+.btn-aplicar {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    background: var(--text-main);
+    /* Botón oscuro como en la captura */
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn-aplicar:active {
+    box-shadow: inset 3px 3px 6px #000;
+}
+
+/* --- 4. SECCIÓN DE PRODUCTOS Y ENCABEZADO --- */
+.productos-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.productos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+.productos-header h2 {
+    font-size: 1.4rem;
+}
+
+.ordenar-opciones {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* --- 5. GRID DE TARJETAS DE PRODUCTO --- */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.producto-card {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+}
+
+.prod-foto-wrapper {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: inset 4px 4px 10px var(--shadow-dark);
+}
+
+.prod-foto-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.producto-card:hover .prod-foto-wrapper img {
+    transform: scale(1.06);
+}
+
+.tag-nuevo {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--accent);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.prod-info {
+    padding: 1rem 0.5rem 0.2rem;
+}
+
+.prod-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.codigo {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.prod-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.precio {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.prod-acciones {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-contacto-producto {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-contacto-producto {
+    min-width: 132px;
+    padding: 0 1.1rem;
+    height: 38px;
+    border-radius: 20px;
+    background: var(--bg-color);
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 0.85rem;
+    gap: 0.5rem;
+    box-shadow: 6px 6px 12px var(--shadow-dark),
+        -6px -6px 12px var(--shadow-light);
+}
+
+.btn-contacto-producto:hover {
+    color: var(--text-main);
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.icono-contacto-img {
+    display: block;
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.btn-contacto-producto:active {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark),
+        inset -2px -2px 5px var(--shadow-light);
+}
+
+/* --- 6. SECCIÓN BANNER DE SUSCRIPCIÓN (FAMILIA ROSGALY) --- */
+.banner-suscripcion {
+    margin: 4rem 5% 2rem;
+    border-radius: 25px;
+    overflow: hidden;
+    /* Imagen de fondo desenfocada estática elegante */
+    background: url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+    position: relative;
+}
+
+.suscripcion-overlay {
+    background: rgba(246, 234, 236, 0.85);
+    /* Tinte de tu paleta sobre la foto */
+    padding: 4rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    /* Efecto cristal suave */
+}
+
+.banner-suscripcion h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.banner-suscripcion p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.suscripcion-form {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 650px;
+}
+
+.suscripcion-form input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.btn-enviar {
+    padding: 0 2.5rem;
+    border: none;
+    border-radius: 30px;
+    background: #2e3b32;
+    /* Verde corporativo oscuro como el footer */
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* --- 7. RESPONSIVE --- */
+@media (max-width: 992px) {
+    .tienda-layout {
+        grid-template-columns: 1fr;
+        /* Pasa los filtros arriba en tabletas y móviles */
+    }
+}
+
+@media (max-width: 600px) {
+    /* Convertir las categorías rápidas en un carrusel horizontal para móviles */
+    .categorias-rapidas {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 1rem 5% 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Oculta scrollbar en Firefox */
+    }
+    
+    .categorias-rapidas::-webkit-scrollbar {
+        display: none; /* Oculta scrollbar en Chrome/Safari/Edge */
+    }
+
+    .cat-item {
+        min-width: 120px;
+        padding: 0.8rem 1rem;
+    }
+
+    .cat-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .cat-icon img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .cat-icon img.icono-caja {
+        width: 28px;
+        height: 28px;
+    }
+
+    .suscripcion-form {
+        flex-direction: column;
+    }
+
+    .btn-enviar {
+        padding: 1rem;
+    }
+}

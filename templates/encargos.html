@@ -1,0 +1,551 @@
+{% extends "index.html" %}
+
+{% block content %}
+<header class="neu-header">
+    <div class="logo">
+        <a href="/">
+            <h1>Tina plena de flors</h1>
+        </a>
+    </div>
+    <nav class="nav-links">
+        <a href="/">Portada</a>
+        <a href="/nosotros" >Sobre Nosotros</a>
+        <a href="/bodas">Bodas</a>
+        <a href="/eventos">Eventos</a>
+        <a href="/flores">Flores</a>
+        <a href="/encargos" class="active">Encargos/Entregas</a>
+        <a href="/contacto">Contacto</a>
+    </nav>
+</header>
+<main>
+    <div class="main-wrapper">
+        <div class="container form-container">
+            <h2>🌸 Floristería Tina plena de flors</h2>
+            <p class="subtitle">
+                Cuéntanos qué necesitas y nos pondremos en contacto.
+            </p>
+
+            <!-- Mostramos mensajes de error del servidor si existen -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <form action="{{ url_for('pedidos') }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <!-- Campo oculto para detectar si es un envío real o solo una actualización de opciones -->
+                <input type="hidden" name="action" id="form_action" value="enviar">
+
+                <!-- Campo Email (mantiene su valor si se recarga) -->
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" maxlength="254" placeholder="tu@correo.com" value="{{ datos.email }}"
+                        required />
+                </div>
+
+                <!-- Radio Buttons: Pedido vs Presupuesto -->
+                <div class="form-group" id="seccion-solicitud">
+                    <label>Solicitud</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="tipo_solicitud" value="presupuesto"
+                                {% if tipo_solicitud=='presupuesto' %}checked{% endif %} />
+                            Presupuesto
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tipo_solicitud" value="pedido"
+                                {% if tipo_solicitud=='pedido' %}checked{% endif %} />
+                            Pedido
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Lista Desplegable Dinámica (Renderizada por Flask) -->
+                <div class="form-group" id="dropdown-section">
+                    <label for="tipo_evento">Tipo de Solicitud</label>
+                    <select id="tipo_evento" name="tipo_evento">
+                        {% for opcion in opciones_select %}
+                        <option value="{{ opcion }}" {% if datos.tipo_evento==opcion %}selected{% endif %}>
+                            {{ opcion }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Campo de Texto General -->
+                <div class="form-group">
+                    <label for="mensaje">Detalles Adicionales</label>
+                    <textarea id="mensaje" name="mensaje"
+                        placeholder="Ej: Fecha del evento, fechas de entrega, colores preferidos..." rows="10" cols="50"
+                        maxlength="600"
+                        oninput="document.getElementById('contador-mensaje').innerText = this.value.length + ' / 600 caracteres'">{{ datos.mensaje }}</textarea>
+                    <!-- Contador de caracteres para los Detalles Adicionales -->
+                    <span class="char-count" id="contador-mensaje" {% if datos.mensaje|length> 600 %}style="color:
+                        red;"{% endif %}>
+                        {{ datos.mensaje|length }} / 600 caracteres
+                    </span>
+                </div>
+
+                <!-- Checkbox Nota Personal -->
+                <div class="form-group" id="seccion-nota-check">
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="incluye_nota" name="incluye_nota"
+                            {% if incluye_nota %}checked{% endif %} />
+                        Incluir nota personalizada
+                    </label>
+                </div>
+
+                <!-- Área de Texto para la Nota (Mostrada mágicamente por CSS) -->
+                <div id="nota-section" class="form-group dynamic-section">
+                    <label for="nota">Tu nota (Máximo 200 caracteres)</label>
+                    <!-- usamos JS porque no hay forma de calcularlo del lado del servidor -->
+                    <textarea id="nota" name="nota" maxlength="200" 
+                        oninput="document.getElementById('contador').innerText = this.value.length + ' / 200 caracteres'">{{ datos.nota }}</textarea>
+
+                    <!-- El contador ahora calcula los caracteres del lado del servidor al recargar -->
+                    <span class="char-count" id="contador" {% if datos.nota|length > 200 %}style="color: red;"{% endif %}>
+                        {{ datos.nota|length }} / 200 caracteres
+                    </span>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    Enviar Solicitud
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sección de Preguntas Frecuentes -->
+    <section class="faq-section">
+        <h2 class="faq-title">Preguntas Frecuentes</h2>
+        <p class="faq-intro">
+            Resolvemos tus dudas sobre nuestros servicios
+            de decoración para bodas.
+        </p>
+    
+        <div class="faq-container">
+            <!-- Pregunta 1 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Tienen disponibilidad para mi fecha?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        La disponibilidad es lo primero que verificamos.
+                        Al ser una fecha concreta, debo consultar
+                        nuestra agenda en tiempo real. Los fines de
+                        semana en temporada alta (mayo a octubre) se
+                        reservan con mucha antelación, a veces con un
+                        año de margen. Si no estamos disponibles,
+                        podemos recomendaros otros colegas de confianza
+                        o, si es un día entre semana, las opciones
+                        suelen ser más flexibles.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 2 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Qué experiencia tienen con bodas de mi estilo o
+                    tamaño?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Llevamos años especializándonos en bodas, desde
+                        ceremonias íntimas de 20 personas hasta grandes
+                        celebraciones de 300 invitados. Hemos trabajado
+                        con estilos rústicos, modernos, vintage y
+                        bohemios. Lo importante no es solo el número,
+                        sino entender vuestra esencia.
+                    </p>
+                    <p>
+                        ¿Podemos ver ejemplos de su portafolio? ¡Por
+                        supuesto! Os mostraremos un
+                        <em>lookbook</em> con ramos y decoraciones que
+                        encajen con vuestra paleta de colores.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 3 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Han trabajado en mi lugar de celebración antes?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Esta es una pregunta clave. Si ya conocemos el
+                        <em>venue</em> (iglesia, finca o salón), sabemos
+                        exactamente cómo es la luz natural, qué
+                        mobiliario hay y qué limitaciones logísticas
+                        existen. Esto nos permite daros un presupuesto
+                        mucho más realista y ahorrar tiempo.
+                    </p>
+                    <p>
+                        Si no lo hemos trabajado, ¡nuestra propuesta es
+                        visitarlo juntos! Así podemos visualizar el
+                        espacio con vosotros y asegurar que la
+                        decoración fluya con la arquitectura del lugar.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 4 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Qué flores recomiendan para mi temporada y paleta
+                    de colores?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        El secreto para un ramo y una decoración
+                        espectaculares sin disparar el coste es elegir
+                        <strong>flores de temporada</strong>. En mayo,
+                        por ejemplo, tenemos peonías, rosas, tulipanes y
+                        lilas en su mejor momento.
+                    </p>
+                    <p>
+                        Si queréis flores que no están en temporada
+                        (como ciertas hortensias en invierno), el precio
+                        sube considerablemente porque deben importarse.
+                        Os asesoraremos para encontrar variedades que
+                        encajen con vuestros colores favoritos y sean
+                        frescas y duraderas en la fecha de vuestra boda.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 5 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Pueden sustituir flores específicas si no están
+                    disponibles?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Absolutamente. El mercado floral es impredecible
+                        y a veces una variedad no llega en la calidad
+                        que os merecéis. Nuestro compromiso es con el
+                        <strong>resultado visual</strong>, no con el
+                        nombre de la flor. Si la peonía que queréis no
+                        está perfecta, os proponemos una alternativa
+                        estética similar que mantenga la armonía de
+                        vuestro diseño y, a menudo, ahorrando costes.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 6 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Qué incluye exactamente el presupuesto?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Nuestros presupuestos son detallados y
+                        transparentes. El precio final incluye:
+                    </p>
+                    <ul>
+                        <li>Las flores y follajes seleccionados.</li>
+                        <li>
+                            El diseño y manualidad de todos los arreglos
+                            (ramos, centros, arcos, etc.).
+                        </li>
+                        <li>
+                            Elementos de sujeción (jarrones, soportes,
+                            cintas, alambres).
+                        </li>
+                        <li>
+                            Transporte y logística hasta el
+                            <em>venue</em>.
+                        </li>
+                        <li>
+                            Montaje el día de la boda y desmontaje
+                            posterior (si está pactado).
+                        </li>
+                        <li>IVA incluido.</li>
+                    </ul>
+                    <p>
+                        <em>Nota: A veces los alquileres de estructuras
+                            especiales se cotizan aparte, pero siempre
+                            lo especificamos.</em>
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 7 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Cómo varían los precios según la elección de
+                    flores?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>El coste depende de tres factores:</p>
+                    <ul>
+                        <li>La cantidad de flores por arreglo.</li>
+                        <li>
+                            La dificultad de la creación (un arco floral
+                            es más laborioso que un centro simple).
+                        </li>
+                        <li>La variedad.</li>
+                    </ul>
+                    <p>
+                        Las flores importadas o fuera de temporada
+                        pueden encarecer el presupuesto un 30-40%. Os
+                        recomendamos ser flexibles con las variedades
+                        para optimizar el gasto sin sacrificar belleza.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 8 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Hay opciones para alquilar elementos y ahorrar
+                    costos?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        ¡Sí! No todo tiene que ser comprado. Podemos
+                        alquilar macetas, candelabros, estructuras
+                        metálicas o incluso elementos verdes (como
+                        helechos o enredaderas) que no son flores
+                        frescas. Esto reduce el coste de materiales y es
+                        una opción muy sostenible.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 9 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Cuándo debo confirmar el pedido final?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Aunque cerramos el diseño general con 6-8 meses
+                        de antelación, las decisiones finales sobre los
+                        tipos exactos de flores se toman unas
+                        <strong>4 a 6 semanas antes</strong> de la boda.
+                        En ese momento, revisamos la disponibilidad real
+                        en el mercado y ajustamos los detalles para
+                        garantizar la máxima calidad.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 10 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Quién será mi punto de contacto el día de la boda?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Queremos tranquilidad para vosotros.
+                        Normalmente, quien os ha asesorado durante la
+                        planificación será quien supervise el montaje, o
+                        bien un coordinador senior de nuestro equipo. Os
+                        confirmaremos el nombre y número de teléfono de
+                        la persona encargada de ejecutar todo el día del
+                        evento para que no tengáis dudas.
+                    </p>
+                </div>
+            </details>
+    
+            <!-- Pregunta 11 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Qué pasa con las flores después de la boda?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Esta es una pregunta muy común. Os damos varias
+                        opciones:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Retirada:</strong> Nos encargamos de
+                            desmontar y retirar todo para que no tengáis
+                            que pensar en ello.
+                        </li>
+                        <li>
+                            <strong>Recogida por vosotros:</strong>
+                            Podéis llevaros algunos elementos (como los
+                            centros de mesa o el ramo de la novia) a
+                            casa para decorar vuestro hogar o hacer un
+                            secado.
+                        </li>
+                        <li>
+                            <strong>Donación:</strong> Algunas parejas
+                            optan por donar las flores a hospitales o
+                            residencias; podemos ayudaros a coordinarlo.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+    
+            <!-- Pregunta 12 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Cómo podemos asegurarnos de que las flores se
+                    mantengan frescas todo el día?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        La frescura es nuestra prioridad y tenemos un
+                        protocolo estricto para garantizarlo:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Cadena de frío y preparación:</strong>
+                            Las flores llegan a nuestro taller 2-3 días
+                            antes. Las rehidratamos, cortamos los tallos
+                            y las colocamos en agua con conservantes
+                            especiales durante 24-48 horas.
+                        </li>
+                        <li>
+                            <strong>Elección de variedades
+                                resistentes:</strong>
+                            Os recomendamos flores que aguanten bien el
+                            calor (rosas, orquídeas, crisantemos,
+                            suculentas) si la boda es al aire libre en
+                            verano.
+                        </li>
+                        <li>
+                            <strong>Montaje en el último momento:</strong>
+                            Intentamos hacer el montaje el mismo día de
+                            la boda lo más cerca posible de la hora del
+                            evento.
+                        </li>
+                        <li>
+                            <strong>Cuidados durante el evento:</strong>
+                            <ul>
+                                <li>
+                                    <em>Ramo de la novia:</em> Llevamos
+                                    un "portabouquet" con agua o esponja
+                                    hidratada.
+                                </li>
+                                <li>
+                                    <em>Centros de mesa:</em> Usamos
+                                    bases con agua oculta o técnicas de
+                                    inmersión.
+                                </li>
+                                <li>
+                                    <em>Clima:</em> Sugerimos ubicar los
+                                    arreglos en zonas sombreadas o
+                                    incluir un "kit de emergencia" con
+                                    agua en spray.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+    
+            <!-- Pregunta 13 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Tenemos que decorar todos los espacios?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        ¡Absolutamente no! La decoración debe adaptarse
+                        a vuestro estilo y presupuesto, no a una regla
+                        preestablecida.
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Menos es más:</strong> Muchas
+                            parejas eligen decorar solo los puntos clave
+                            (arco, centros de mesa, ramo). El resto
+                            puede quedar con la belleza natural del
+                            lugar.
+                        </li>
+                        <li>
+                            <strong>Estrategia visual:</strong> Si el
+                            venue ya es bonito, basta con un detalle en
+                            la entrada y la mesa de la tarta. Si es un
+                            espacio neutro, quizás necesitemos más
+                            presencia floral.
+                        </li>
+                        <li>
+                            <strong>Zonas estratégicas:</strong> Os
+                            ayudamos a identificar qué rincones impactan
+                            más visualmente para que vuestro dinero se
+                            invierta donde más se note.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+    
+            <!-- Pregunta 14 -->
+            <details class="faq-item">
+                <summary class="faq-question">
+                    ¿Hay un presupuesto o gasto mínimo?
+                    <span class="icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Sí, generalmente trabajamos con un presupuesto
+                        mínimo para poder ofrecer un servicio de
+                        calidad, aunque este varía según la ciudad y la
+                        complejidad:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Presupuesto base:</strong> Para un
+                            servicio básico (ramo, prendidos, decoración
+                            sencilla de ceremonia y centros), el mínimo
+                            suele rondar entre
+                            <strong>800€ y 1.200€</strong>.
+                        </li>
+                        <li>
+                            <strong>Por qué existe un mínimo:</strong>
+                            Incluye diseño, montaje, desmontaje,
+                            transporte y mano de obra especializada. Por
+                            debajo de esta cifra es difícil cubrir
+                            costes sin sacrificar calidad.
+                        </li>
+                        <li>
+                            <strong>Flexibilidad:</strong> Si vuestro
+                            presupuesto es ajustado, podemos ajustar el
+                            tipo de arreglos (más follaje, menos flores
+                            caras) para acercarnos a vuestro límite
+                            manteniendo profesionalidad.
+                        </li>
+                    </ul>
+                    <p>
+                        ¿Os gustaría que hagamos un cálculo aproximado
+                        para vuestra boda? ¡Solo necesitamos saber el
+                        número de invitados y el estilo que tenéis en
+                        mente!
+                    </p>
+                </div>
+            </details>
+        </div>
+    </section>
+</main>
+
+<!-- Botón Flotante de WhatsApp -->
+<a href="https://wa.me/34617383570?text=%C2%A1Hola%21%20He%20estado%20visitando%20vuestra%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20florister%C3%ADa.%20%C2%A1Gracias%21" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+{% endblock %}
