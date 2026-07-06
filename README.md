@@ -107,10 +107,6 @@ flores_final/
 
 6. Abre [http://127.0.0.1:5001](http://127.0.0.1:5001) en el navegador.
 
-### Inicio rápido en macOS
-
-También puedes hacer doble clic en `iniciar.command`. El script localiza o crea el entorno virtual, instala las dependencias necesarias e inicia la aplicación.
-
 
 ## Configuración segura
 
